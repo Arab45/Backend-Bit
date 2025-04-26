@@ -1,8 +1,8 @@
-const sendError = (res, message, status=404) =>{
-    return res.json({
+const sendError = (res, message, statuCode=404) =>{
+    return res.status(statuCode).json({
         success: false,
         message: message,
-        status: status  
+        statuCode: statuCode  
     })
 };
 

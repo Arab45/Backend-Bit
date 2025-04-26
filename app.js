@@ -7,7 +7,7 @@ const userRouter = require('./src/router/user-router');
 
 
 app.use(express.json());
-app.use('/create', userRouter);
+app.use('/user', userRouter);
 
 
 app.listen(3000, () => {
