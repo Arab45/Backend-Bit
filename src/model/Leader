@@ -14,7 +14,7 @@ const leaderSchema = new Schema({
         type: String,
         required: true
     },
-    creatAt: {
+    createdAt: {
         type: Date,
         default: Date.now()
     }

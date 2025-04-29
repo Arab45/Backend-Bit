@@ -10,7 +10,11 @@ const notificationSchema = new Schema({
         type: String,
         required: true
     },
-    accoutObject: {
+    content: {
+        type: String,
+        required: true
+    },
+    accountObject: {
         account: {
             type: String,
         },
@@ -24,7 +28,7 @@ const notificationSchema = new Schema({
             type: String,
         }, 
     },
-    creatAt: {
+    createdAt: {
         type: Date,
         default: Date.now()
     }

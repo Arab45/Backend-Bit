@@ -1,8 +1,11 @@
+const { sendSuccess } = require("../middleware");
+const Leader = require("../model/Leader");
+
 const createLeader = async (req, res) => {
     try {
     const newLeader = new Leader(...req.body);
     if (!newLeader) {
-        return sendError(res, 'Leader does not exist', 401);
+        return sendError (res, 'Leader does not exist', 401);
     }
 
         await newLeader.save();

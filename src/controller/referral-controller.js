@@ -1,3 +1,6 @@
+const { sendError } = require("../middleware");
+const Referral = require("../model/Referral");
+
 const createReferral = async (req, res) => {
     try {
         const newReferral = new Referral({ ...req.body });
