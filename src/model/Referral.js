@@ -6,6 +6,10 @@ const referralSchema = new Schema({
         type: String,
         required: true
     },
+    avatarImgId: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
