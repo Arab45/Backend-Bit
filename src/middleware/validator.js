@@ -3,16 +3,6 @@ const { sendError } = require('../middleware/index');
 
 
 const validateSignUp = [
-    check('fullName')
-        .trim()
-        .not()
-        .isEmpty()
-        .withMessage('full name is missing'),
-        check('phone')
-        .trim()
-        .not()
-        .isEmpty()
-        .withMessage('full name is missing'),
     check('email').trim()
         .not()
         .isEmpty()
