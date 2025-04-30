@@ -1,5 +1,5 @@
 const { cloudinary } = require("../../service/cloudinary");
-const { sendError } = require("../middleware");
+const { sendError, sendSuccess } = require("../middleware");
 const Referral = require("../model/Referral");
 
 const createReferral = async (req, res) => {
@@ -27,7 +27,7 @@ const createReferral = async (req, res) => {
 
         const newReferral = new Referral({ ...req.body });
        const referral = await newReferral.save()
-        return sendSuccess(res, "leaderboard created successfully", referral)
+        return sendSuccess(res, "referral created successfully", referral)
     } catch (error) {
        console.error(error);
        return sendError(res, "Something went wrong", 500) 
@@ -96,7 +96,7 @@ const updateReferral = async (req, res) => {
             }
         }
 
-        const referral = await Leader.findByIdAndUpdate(id, {$set: updateData}, {new: true});
+        const referral = await Referral.findByIdAndUpdate(id, {$set: updateData}, {new: true});
         return sendSuccess(res, 'successfully update student profile', referral);
     } catch (error) {
        console.log(error);
