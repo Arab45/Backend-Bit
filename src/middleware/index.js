@@ -6,10 +6,11 @@ const sendError = (res, message, statuCode=404) =>{
     })
 };
 
-const sendSuccess = (res, message, data) => {
+const sendSuccess = (res, message, token, data) => {
     return res.json({
         success: true,
         message: message,
+        token: token,
         data: data
     })
 };
