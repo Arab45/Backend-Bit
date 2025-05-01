@@ -18,7 +18,7 @@ app.use('/referral', referralRouter);
 
 // This is your cron job, it runs every minute
 cron.schedule('* * * * *', () => {
-  console.log('Cron job executed at:', new Date());
+  // console.log('Cron job executed at:', new Date());
   // You can add your custom code here that needs to run periodically
 });
 

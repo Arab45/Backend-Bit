@@ -37,14 +37,14 @@ const loginIn = async (req, res, next) => {
         process.env.JWT_USER_SECRET, {expiresIn: '1d'});
 
         //Creating both server/browser cookies
-        res.cookie(String(checkuserExist._id), loginToken, {
-            path: '/',
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-            httpOnly: true,
-            sameSite: 'lax'
-        });
+        // res.cookie(String(checkuserExist._id), loginToken, {
+        //     path: '/',
+        //     expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+        //     httpOnly: true,
+        //     sameSite: 'lax'
+        // });
      
-        return sendSuccess(res, "successfully login", checkuserExist);
+        return sendSuccess(res, "successfully login", loginToken, checkuserExist);
     } catch (error) {
         return sendError(res, 'Something when wrong', 500);
     }
