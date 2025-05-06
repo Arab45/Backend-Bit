@@ -37,12 +37,15 @@ const loginIn = async (req, res, next) => {
         process.env.JWT_USER_SECRET, {expiresIn: '1d'});
 
         //Creating both server/browser cookies
-        res.cookie(String(checkuserExist._id), loginToken, {
-            path: '/',
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-            httpOnly: true,
-            sameSite: 'lax'
-        });
+        // res.cookie(String(checkuserExist._id), loginToken, {
+        //     path: '/',
+        //     expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+        //     httpOnly: true,
+        //     sameSite: 'lax'
+        // });
+
+        req.body = { loginToken, checkuserExist };
+        next();
      
         return sendSuccess(res, "successfully login", loginToken, checkuserExist);
     } catch (error) {
@@ -82,33 +85,31 @@ const verifyLoginUserToken = (req, res, next) => {
 
 
 
-const logOut = (req, res) => {
-    const cookie = req.headers.cookie;
-    if (!cookie) {
-        return sendError(res, 'No cookie found, You are not authorized to access this resource.');
-    };
+// const logOut = (req, res) => {
+//     const cookie = req.headers.cookie;
+//     if (!cookie) {
+//         return sendError(res, 'No cookie found, You are not authorized to access this resource.');
+//     };
 
-    const token = cookie.split('=')[1];
-    const isToken = token.split(';')[0];
-    if (!isToken) {
-        return sendError(res, 'No session cookie found, login first');
-    };
+//     const token = cookie.split('=')[1];
+//     const isToken = token.split(';')[0];
+//     if (!isToken) {
+//         return sendError(res, 'No session cookie found, login first');
+//     };
 
-    jwt.verify(String(isToken), process.env.JWT_USER_SECRET, (error, success) => {
-        if (error) {
-            return sendError(res, 'Your session cannot be verified, you are not authorized to access this resource')
-        };
+//     jwt.verify(String(isToken), process.env.JWT_USER_SECRET, (error, success) => {
+//         if (error) {
+//             return sendError(res, 'Your session cannot be verified, you are not authorized to access this resource')
+//         };
 
 
-        //clearing the cookie from my database
-        res.clearCookie([`${success.userId}`]);
-        return sendSuccess(res, 'Successfully logged out.');
+//         //clearing the cookie from my database
+//         res.clearCookie([`${success.userId}`]);
+//         return sendSuccess(res, 'Successfully logged out.');
        
-    });
+//     });
 
-
-
-};
+// };
 
 const forgetPasswordToken = async (req, res, next) => {
     const { email } = req.body;

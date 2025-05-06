@@ -24,7 +24,7 @@ const sendUserEmail = async (req, res) => {
 
 
 const userSessionEmail = async (req, res) => {
-    const userId = req.id;
+    req.body = {}
     const user = await User.findById(userId);
     console.log(`from nodemailer ${user}`);
     const email = user.email;
