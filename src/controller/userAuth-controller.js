@@ -180,18 +180,18 @@ const resetPassword = async (req, res, next) => {
 };
 
 // logout.controller.js
-app.post('/logout', async (req, res) => {
-    const { refreshToken } = req.body;
-    if (!refreshToken) return res.sendStatus(400);
+// app.post('/logout', async (req, res) => {
+//     const { refreshToken } = req.body;
+//     if (!refreshToken) return res.sendStatus(400);
   
-    const user = await User.findOne({ refreshToken });
-    if (!user) return res.sendStatus(204); // already logged out
+//     const user = await User.findOne({ refreshToken });
+//     if (!user) return res.sendStatus(204); // already logged out
   
-    user.refreshToken = null;
-    await user.save();
+//     user.refreshToken = null;
+//     await user.save();
   
-    res.json({ message: 'Logged out successfully' });
-  });
+//     res.json({ message: 'Logged out successfully' });
+//   });
   
 
 module.exports = {
