@@ -35,7 +35,7 @@ const userSessionEmail = async (req, res) => {
     try {
         sendMail(email, subject, body);
     } catch (error) {
-        // console.log(error.message);;
+        // console.log(error.message);
         return sendSuccess(res, 'Unable to verify that it is you!');   
     }
     return sendSuccess( res, 'Email has been successfully send to you.', user );
